@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link href="{% static 'portal/style.css' %}">
+    <title>Home</title>
+</head>
+<body>
+<div>
+    <nav>
+        <h3>Navbar</h3>
+    </nav>
+</div>
+<div>
+    {% block body %}
+    {% endblock %}
+</div>
+</body>
+</html>

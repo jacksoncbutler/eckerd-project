@@ -1,7 +1,37 @@
 {% extends 'portal/base.html'%}
 
+{% block title %}<title>Home</title>{% endblock %}
+
 {% block body %}
-<div>
-<h3>This is the home page</h3>
-</div>
+    <div>
+        <div>
+            <h1>Calender</h1>
+        </div>
+        <div id="calendar">
+            <p>info</p>
+        </div>
+        {% include 'portal/calender_template.html' %}
+    </div>
+    <div id="news">
+        <div>
+            <h2>News</h2>
+            {% for article in articles %}
+                {% csrf_token %}
+                <div>
+                    <h3>{{ article.title }}</h3>
+                    <h4>{{ article.author }}</h4>
+                    <p>{{ article.description }}</p>
+                    <p><a href="{{ article.url }}">Click here to read more...</a></p>
+                    <form action="{% url 'portal:article-delete' article.id %}" method="post" style="display: inline-block">
+                        {% csrf_token %}
+                        <input type="hidden" name="article_id" value="{{ article.id }}">
+                        <button type="submit">
+                            <span>Delete</span>
+                        </button>
+
+                    </form>
+                </div><br>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,9 +1,15 @@
+
 * {
     padding: 0;
     margin: 0;
 }
 
-nav {
-    background-color: black;
-    color: white;
+#calendar {
+    text-align: center;
+    border:1px solid black;
+}
+
+#calendar > table {
+    margin-left: auto;
+    margin-right: auto;
 }
